@@ -6,12 +6,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
+<ion-content>
   <ion-item *ngFor="let user of listaUsuarios">
 
-    <ion-avatar slot="stat">
-      <img [src]="user.avatar">
+    <ion-avatar slot="start">
+      <img [src]="user.avatar" alt="">
     </ion-avatar>
+
     <ion-label>
       <div>
         <h1>{{user.first_name}} {{user.last_name}}</h1>
@@ -22,27 +23,21 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-button>
-          <ion-icon slot="icon-only" name="star"></ion-icon>
+        <ion-button expand="block" (click)="buscarUsuario(page -1)"  *ngIf="page >1">
+          <ion-icon slot="icon-only" name="arrow-undo-outline"></ion-icon>
         </ion-button>
+        
       </ion-col>
+       <ion-col>{{page}} de {{totalPaginas}}</ion-col>
       <ion-col>
-        <ion-button>
-          <ion-icon slot="icon-only" name="star"></ion-icon>
+        <ion-button expand="block" (click)="buscarUsuario(page +1)" *ngIf="page < totalPaginas">
+          <ion-icon slot="icon-only" name="arrow-redo-outline"></ion-icon>
         </ion-button>
+        
       </ion-col>
-      <ion-col>
-        <ion-button>
-          <ion-icon slot="icon-only" name="star"></ion-icon>
-        </ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button>
-          <ion-icon slot="icon-only" name="star"></ion-icon>
-        </ion-button>
-      </ion-col>
+ 
     </ion-row>
   </ion-grid>
- 
-  
+
+
 </ion-content>
